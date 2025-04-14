@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import HowWeWork from "@/components/HowWeWork";
 import ServicesSection from "@/components/ServicesSection";
 import Testimonials from "@/components/Testimonials";
+import Footer from "@/components/Footer";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <ServicesSection />
       <HowWeWork />
       <Testimonials />
+      <Footer />
     </section>
   );
 };

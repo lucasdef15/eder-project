@@ -8,13 +8,36 @@ const HeroSection = () => {
   useEffect(() => {
     const elements = heroRef.current.querySelectorAll(".hero-text");
 
-    gsap.to(elements, {
-      opacity: 1,
-      y: -100,
-      duration: 2,
-      ease: "power4.out",
-      stagger: 0.5,
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Reseta as propriedades antes de animar de novo
+            gsap.set(elements, { opacity: 0, y: 0 });
+
+            // Executa a animação
+            gsap.to(elements, {
+              opacity: 1,
+              y: -100,
+              duration: 2,
+              ease: "power4.out",
+              stagger: 0.5,
+            });
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => {
+      if (heroRef.current) {
+        observer.unobserve(heroRef.current);
+      }
+    };
   }, []);
 
   useEffect(() => {

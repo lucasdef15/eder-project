@@ -11,6 +11,9 @@ import {
 
 const Testimonials = () => {
   const sliderRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const descRef = useRef(null);
 
   const testimonials = [
     {
@@ -72,8 +75,45 @@ const Testimonials = () => {
     animate();
   }, []);
 
+  useEffect(() => {
+    // Cabeçalho
+    gsap.fromTo(
+      [titleRef.current, subtitleRef.current, descRef.current],
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "play reset play reset", // repete ao subir e descer
+        },
+      }
+    );
+  }, []);
+
   return (
     <section className="bg-teal-900/10 p-20">
+      <div className="flex flex-col justify-center items-center w-full gap-3 text-center mb-10">
+        <h3
+          ref={titleRef}
+          className="text-teal-600 uppercase text-sm font-semibold"
+        >
+          CLIENT TESTIMONIALS
+        </h3>
+        <h2
+          ref={subtitleRef}
+          className="text-3xl md:text-4xl font-bold text-emerald-950"
+        >
+          What Our Clients Are Saying
+        </h2>
+        <p ref={descRef} className="text-emerald-800 text-lg">
+          Hear firsthand accounts of healing and positive change.
+        </p>
+      </div>
       <section className="overflow-hidden w-[80%] mx-auto my-16">
         <div
           ref={sliderRef}

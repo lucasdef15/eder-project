@@ -65,7 +65,7 @@ const Header = () => {
       <section>
         <Link to={"/"}>
           <img
-            src="/assets/images/logo.svg"
+            src="/assets/images/logoDark.svg"
             className="w-15 h-14 relative left-11 scale-[3]"
             alt=""
           />
