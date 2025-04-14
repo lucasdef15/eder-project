@@ -50,7 +50,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden">
       {/* Vídeo de fundo */}
       <video
         ref={videoRef}
@@ -62,21 +62,21 @@ const HeroSection = () => {
         preload="auto"
       >
         <source src="/assets/videos/hero.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
+        Seu navegador não suporta vídeo.
       </video>
 
-      {/* Overlay com filtro escuro */}
-      <div className="absolute top-0  left-0 w-full h-full bg-black bg-opacity-40 z-[-1]"></div>
+      {/* Overlay escura */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-[1]" />
 
-      {/* Conteúdo acima de tudo */}
+      {/* Conteúdo principal */}
       <div
         ref={heroRef}
-        className="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-4"
+        className="relative z-20 flex flex-col items-center justify-center h-full text-white text-center px-6 sm:px-10"
       >
-        <h1 className="hero-text text-5xl md:text-6xl font-bold mb-4 opacity-0">
+        <h1 className="hero-text text-3xl sm:text-4xl md:text-6xl font-bold mb-4 opacity-0">
           Bem-vindo à Mindfulness
         </h1>
-        <p className="hero-text text-lg md:text-xl opacity-0">
+        <p className="hero-text text-base sm:text-lg md:text-xl opacity-0 max-w-xl">
           Cuidado psicológico com empatia, acolhimento e profissionalismo
         </p>
       </div>

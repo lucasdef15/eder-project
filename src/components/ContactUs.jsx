@@ -60,7 +60,7 @@ const ContactSection = () => {
       {/* Imagem */}
       <div
         ref={containerRef}
-        className="relative w-[500px] h-[800px] overflow-hidden rounded-4xl"
+        className="hidden relative w-[500px] h-[800px] overflow-hidden rounded-4xl"
       >
         <img
           ref={imageRef}

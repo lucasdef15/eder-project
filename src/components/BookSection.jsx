@@ -83,7 +83,7 @@ const BookSection = () => {
           terapias eficazes e personalizadas de acordo com suas necessidades.
           Conte conosco para te apoiar em cada etapa dessa jornada.
         </p>
-        <div className="flex items-center justify-between w-full text-emerald-800 book-buttons gap-4">
+        <div className="hidden items-center justify-between w-full text-emerald-800 book-buttons gap-4">
           <ButtonSecondary>
             Agendar uma Consulta <FaArrowRight />
           </ButtonSecondary>
