@@ -34,7 +34,7 @@ const Stepper = ({ currentStep = 1, stepRefs, cardRefs }) => {
         {steps.map((step, index) => (
           <div
             key={step.number}
-            className="z-10 flex flex-col items-center w-1/4"
+            className="z-10 flex flex-col items-center w-1/4 md:w-1/5 lg:w-1/4"
           >
             <div
               ref={(el) => (stepRefs.current[index] = el)}
@@ -53,8 +53,12 @@ const Stepper = ({ currentStep = 1, stepRefs, cardRefs }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-6 w-full max-w-5xl text-center">
         {steps.map((step, index) => (
           <div key={step.number} ref={(el) => (cardRefs.current[index] = el)}>
-            <h3 className="text-lg font-semibold">{step.title}</h3>
-            <p className="text-sm text-gray-600 mt-2">{step.description}</p>
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">
+              {step.title}
+            </h3>
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-2">
+              {step.description}
+            </p>
           </div>
         ))}
       </div>

@@ -52,7 +52,7 @@ const ServicesSection = () => {
       image: "assets/images/terapia5.png",
     },
     {
-      title: "Comunicação Não-Violenta",
+      title: "Sobre CNV",
       href: "/comunicacao-nao-violenta",
       description:
         "Aprenda a se expressar com empatia e escuta ativa, fortalecendo conexões e prevenindo conflitos.",
@@ -104,17 +104,17 @@ const ServicesSection = () => {
     >
       <div
         ref={headingRef}
-        className="w-[80%] mx-auto flex flex-col gap-3 pt-20 text-left text-white"
+        className="w-[90%] p-6 sm:p-12 mx-auto flex flex-col gap-3 pt-20 text-left text-white"
       >
         <h3 className="title uppercase text-sm font-semibold">What We Do</h3>
-        <h2 className="title text-3xl md:text-4xl font-bold">
+        <h2 className="title text-3xl sm:text-4xl font-bold">
           Counseling & Therapy Services
         </h2>
-        <p className="title text-lg">
+        <p className="title text-lg sm:text-xl">
           We offer a wide range of services to meet your personal needs
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-20 w-[90%] mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 sm:p-12 w-[90%] mx-auto">
         {components.map((component, index) => {
           const handleMouseEnter = () => {
             const imgEl = imageRefs.current[index];
@@ -203,18 +203,18 @@ const ServicesSection = () => {
 
               <Card
                 ref={(el) => (cardRefs.current[index] = el)}
-                className="card-item transition-transform duration-500 overflow-hidden  h-[220px] flex justify-between hover:text-white"
+                className="card-item transition-transform duration-500 overflow-hidden h-[250px] sm:h-[250px] flex justify-between hover:text-white"
               >
                 <CardHeader>
                   <CardTitle
                     ref={(el) => (titleRefs.current[index] = el)}
-                    className="z-10 transition-colors duration-300"
+                    className="z-10 transition-colors duration-300 text-xl sm:text-2xl"
                   >
                     {component.title}
                   </CardTitle>
                   <CardDescription
                     ref={(el) => (descRefs.current[index] = el)}
-                    className="z-10 transition-colors duration-300"
+                    className="z-10 transition-colors duration-300 text-sm sm:text-base"
                   >
                     {component.description}
                   </CardDescription>

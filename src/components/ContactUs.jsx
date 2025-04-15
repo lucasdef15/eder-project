@@ -56,11 +56,11 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-center px-6 py-20 max-w-7xl mx-auto gap-20">
+    <section className="flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 py-16 sm:py-20 max-w-7xl mx-auto gap-12 lg:gap-20">
       {/* Imagem */}
       <div
         ref={containerRef}
-        className="hidden relative w-[500px] h-[800px] overflow-hidden rounded-4xl"
+        className="relative w-full max-w-[400px] sm:max-w-[500px] h-[500px] sm:h-[800px] overflow-hidden rounded-3xl"
       >
         <img
           ref={imageRef}
@@ -79,24 +79,25 @@ const ContactSection = () => {
         {/* Overlay de baixo */}
         <div
           ref={bottomOverlayRef}
-          className="absolute bottom-0 left-0 w-full h-1/2 bg-white/10  opacity-0"
+          className="absolute bottom-0 left-0 w-full h-1/2 bg-white/10 opacity-0"
           style={{ transform: "translateY(100%)" }}
         />
       </div>
 
       {/* Conteúdo */}
-      <div className="w-full md:w-1/2 flex flex-col gap-6">
+      <div className="w-full max-w-xl flex flex-col gap-6 text-center lg:text-left">
         <h3 className="text-teal-600 uppercase text-sm font-semibold">
           Entre em contato
         </h3>
-        <h2 className="text-3xl md:text-4xl font-bold text-emerald-950">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-950">
           Fale com a gente
         </h2>
-        <p className="text-emerald-800 text-lg">
+        <p className="text-emerald-800 text-base sm:text-lg">
           Estamos aqui para te ajudar. Você pode nos ligar, mandar uma mensagem
           ou visitar nosso espaço acolhedor. Escolha o melhor canal para você.
         </p>
-        <div className="flex flex-col gap-4 text-emerald-900">
+
+        <div className="flex flex-col gap-4 text-emerald-900 items-center lg:items-start">
           <div className="flex items-center gap-3">
             <FaPhoneAlt className="text-teal-600" />
             <span>(11) 99999-9999</span>
@@ -111,7 +112,7 @@ const ContactSection = () => {
           </div>
         </div>
 
-        <button className="mt-6 w-fit bg-emerald-500 hover:bg-emerald-700 text-white px-6 py-3 rounded-full transition-all cursor-pointer">
+        <button className="mt-6 mx-auto lg:mx-0 w-fit bg-emerald-500 hover:bg-emerald-700 text-white px-6 py-3 rounded-full transition-all cursor-pointer">
           Enviar Mensagem
         </button>
       </div>

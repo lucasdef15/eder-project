@@ -62,12 +62,11 @@ const Testimonials = () => {
         ease: "back.out(1.7)",
         onComplete: () => {
           index++;
-          // quando chegar na metade (fim da 1ª cópia), reseta
           if (index === totalCards) {
             gsap.set(container, { x: 0 });
             index = 1;
           }
-          setTimeout(animate, 2000); // tempo de pausa
+          setTimeout(animate, 2000);
         },
       });
     };
@@ -89,41 +88,41 @@ const Testimonials = () => {
         scrollTrigger: {
           trigger: titleRef.current,
           start: "top 80%",
-          toggleActions: "play reset play reset", // repete ao subir e descer
+          toggleActions: "play reset play reset",
         },
       }
     );
   }, []);
 
   return (
-    <section className="bg-teal-900/10 p-20">
+    <section className="bg-teal-900/10 p-6 sm:p-10 lg:p-20">
       <div className="flex flex-col justify-center items-center w-full gap-3 text-center mb-10">
         <h3
           ref={titleRef}
-          className="text-teal-600 uppercase text-sm font-semibold"
+          className="text-teal-600 uppercase text-sm sm:text-base font-semibold"
         >
           CLIENT TESTIMONIALS
         </h3>
         <h2
           ref={subtitleRef}
-          className="text-3xl md:text-4xl font-bold text-emerald-950"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-emerald-950"
         >
           What Our Clients Are Saying
         </h2>
-        <p ref={descRef} className="text-emerald-800 text-lg">
+        <p ref={descRef} className="text-emerald-800 text-lg sm:text-xl">
           Hear firsthand accounts of healing and positive change.
         </p>
       </div>
-      <section className="overflow-hidden w-[80%] mx-auto my-16">
+      <section className="overflow-hidden w-full mx-auto my-16">
         <div
           ref={sliderRef}
-          className="flex gap-8 px-4"
+          className="flex gap-8 px-4 sm:px-6"
           style={{ willChange: "transform" }}
         >
           {[...testimonials, ...testimonials].map((testimonial, index) => (
             <Card
               key={index}
-              className="w-80 bg-white shadow-lg rounded-lg overflow-hidden flex-shrink-0"
+              className="w-72 sm:w-80  bg-white shadow-lg rounded-lg overflow-hidden flex-shrink-0"
             >
               <CardHeader className="flex items-center p-4">
                 <img
@@ -132,10 +131,10 @@ const Testimonials = () => {
                   className="w-16 h-16 rounded-full mr-4"
                 />
                 <div>
-                  <CardTitle className="text-xl font-bold">
+                  <CardTitle className="text-xl sm:text-lg font-bold">
                     {testimonial.name}
                   </CardTitle>
-                  <CardDescription className="text-gray-500">
+                  <CardDescription className="text-gray-500 text-wrap">
                     {testimonial.title}
                   </CardDescription>
                 </div>

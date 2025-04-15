@@ -101,8 +101,9 @@ const Benefits = () => {
   ];
 
   return (
-    <div className="p-10 max-w-6xl mx-auto" ref={containerRef}>
-      <div className="py-10">
+    <div className="px-4 py-10 md:p-10 max-w-6xl mx-auto" ref={containerRef}>
+      {/* Cabeçalho */}
+      <div className="pb-8 text-center md:text-left">
         <h3
           ref={headingRef}
           className="text-teal-600 uppercase text-sm font-semibold mb-2"
@@ -111,19 +112,22 @@ const Benefits = () => {
         </h3>
         <h2
           ref={subheadingRef}
-          className="text-3xl font-bold text-brown-900 mb-6 text-emerald-950"
+          className="text-2xl sm:text-3xl font-bold text-emerald-950"
         >
           Quais os ganhos ao fazer um Processo Terapêutico?
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+      {/* Lista de Benefícios */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-8">
         {features.map((feature, idx) => (
           <div key={idx} className="benefit-item flex items-start gap-3">
-            <div className="bg-teal-200 rounded-full p-1">
+            <div className="bg-teal-200 rounded-full p-1 shrink-0">
               <IoIosCheckmark className="text-teal-700 w-5 h-5" />
             </div>
-            <p className="text-emerald-950 text-[16px]">{feature.title}</p>
+            <p className="text-emerald-950 text-base leading-relaxed">
+              {feature.title}
+            </p>
           </div>
         ))}
       </div>

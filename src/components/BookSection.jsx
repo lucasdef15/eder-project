@@ -11,7 +11,7 @@ export function ButtonSecondary({ children }) {
   return (
     <Button
       variant="secondary"
-      className="rounded-full bg-emerald-400 cursor-pointer py-7 hover:bg-emerald-700 hover:text-white transition-all"
+      className="rounded-full bg-emerald-400 cursor-pointer py-7 hover:bg-emerald-700 hover:text-white transition-all w-full sm:w-[50%]  md:w-auto"
     >
       {children}
     </Button>
@@ -71,23 +71,29 @@ const BookSection = () => {
 
   return (
     <div
-      className="flex gap-10 py-15 px-5 bg-[rgba(167,243,208,0.36)] flex-col md:flex-row"
+      className="flex flex-col md:flex-row gap-10 py-10 px-6 bg-[rgba(167,243,208,0.36)]"
       ref={containerRef}
     >
-      <h2 className="text-5xl font-medium text-emerald-950 book-heading">
+      {/* Título */}
+      <h2 className="text-3xl md:text-5xl font-medium text-emerald-950 book-heading">
         Dê o Primeiro Passo em Direção a uma Vida Equilibrada e Plena.
       </h2>
-      <div className="flex flex-col justify-between items-start gap-5 book-paragraph">
-        <p className="text-emerald-800">
+
+      {/* Parágrafo + Botões */}
+      <div className="flex flex-col justify-between gap-6 text-emerald-800 book-paragraph">
+        <p>
           Com uma equipe de psicólogos altamente qualificados, oferecemos
           terapias eficazes e personalizadas de acordo com suas necessidades.
           Conte conosco para te apoiar em cada etapa dessa jornada.
         </p>
-        <div className="hidden items-center justify-between w-full text-emerald-800 book-buttons gap-4">
+
+        {/* Botões (visíveis no mobile agora também!) */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <ButtonSecondary>
             Agendar uma Consulta <FaArrowRight />
           </ButtonSecondary>
-          <span className="flex items-center gap-2 font-medium text-emerald-800">
+
+          <span className="flex items-center gap-2 font-medium">
             Ou envie uma mensagem no WhatsApp
             <ButtonIcon />
           </span>
