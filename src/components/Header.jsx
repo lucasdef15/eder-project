@@ -8,7 +8,7 @@ export function ButtonSecondary({ children }) {
   return (
     <Button
       variant="secondary"
-      className="rounded-full bg-emerald-400 cursor-pointer hover:bg-emerald-700 hover:text-white transition-all "
+      className="rounded-full bg-emerald-300 cursor-pointer hover:bg-emerald-600 hover:text-white transition-all "
     >
       {children}
     </Button>

@@ -13,8 +13,8 @@ const Footer = () => {
         <div className="flex flex-col items-center gap-3">
           <img
             src="/assets/images/logoLight.svg"
+            className="w-10 scale-[3]"
             alt="Logo Eder Coimbra"
-            className="w-12 sm:w-16"
           />
           <p className="text-sm max-w-[250px]">
             Psicólogo dedicado ao cuidado emocional e bem-estar humano.

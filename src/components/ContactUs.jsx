@@ -112,8 +112,9 @@ const ContactSection = () => {
           </div>
         </div>
 
-        <button className="mt-6 mx-auto lg:mx-0 w-fit bg-emerald-500 hover:bg-emerald-700 text-white px-6 py-3 rounded-full transition-all cursor-pointer">
-          Enviar Mensagem
+        <button className="relative overflow-hidden rounded-2xl cursor-pointer w-50  px-6 py-3 font-semibold text-white bg-gradient-to-r from-teal-500 to-emerald-500 shadow-lg transition-all duration-500 ease-in-out hover:from-emerald-500 hover:to-teal-500 hover:scale-105">
+          <span className="relative z-10 ">Saiba Mais</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500 opacity-0 hover:opacity-20 transition duration-700 blur-sm" />
         </button>
       </div>
     </section>
