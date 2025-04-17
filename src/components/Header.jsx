@@ -30,15 +30,15 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 dark:bg-background bg-white shadow-lg px-6 py-4 flex items-center justify-between">
-      <div className="container flex items-center">
-        {/* Esquerda: Mobile Nav ou MainNav */}
-        <div className="flex items-center md:w-auto w-1/3">
-          <MainNav className="hidden md:flex" />
-          <MobileNav className="md:hidden" />
-        </div>
-      </div>
       <div className="flex items-center justify-between w-full ">
         {/* Centro: Logo */}
+        <div className="container flex items-center ">
+          {/* Esquerda: Mobile Nav ou MainNav */}
+          <div className="flex items-center md:w-auto w-1/3">
+            <MainNav className="hidden md:flex" />
+            <MobileNav className="md:hidden" />
+          </div>
+        </div>
         <div className="w-1/3 relative md:hidden flex justify-center">
           <img
             src="/assets/images/logoDark.svg"

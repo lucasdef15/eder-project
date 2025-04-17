@@ -6,37 +6,63 @@ import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-800 text-white p-20">
-      {/* Top Section */}
-      <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 border-b border-cyan-100/20 px-6 py-4">
-        <div className="flex justify-center md:justify-start pl-5 w-full">
+    <footer className="bg-teal-800 text-white mt-20 pt-10 px-6 sm:px-10">
+      {/* Top Grid Section */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 pb-10 border-b border-cyan-100/20 justify-items-center text-center">
+        {/* Logo & About */}
+        <div className="flex flex-col items-center gap-3">
           <img
-            src="assets/images/logoLight.svg"
-            className="w-10 scale-[3]"
+            src="/assets/images/logoLight.svg"
             alt="Logo Eder Coimbra"
+            className="w-12 sm:w-16"
           />
+          <p className="text-sm max-w-[250px]">
+            Psicólogo dedicado ao cuidado emocional e bem-estar humano.
+          </p>
         </div>
-        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 mt-4 md:mt-0">
-          <p className="font-medium text-nowrap">Siga-nos:</p>
-          <div className="flex gap-2">
+
+        {/* Navegação */}
+        <div className="flex flex-col items-center gap-2">
+          <h4 className="font-semibold text-lg mb-2">Navegação</h4>
+          <a href="/terapias" className="hover:underline text-sm">
+            Terapias
+          </a>
+          <a href="/dbt" className="hover:underline text-sm">
+            Sobre DBT
+          </a>
+          <a
+            href="/comunicacao-nao-violenta"
+            className="hover:underline text-sm"
+          >
+            Sobre CNV
+          </a>
+          <a href="/dependentes-quimicos" className="hover:underline text-sm">
+            Dependência Química
+          </a>
+        </div>
+
+        {/* Redes Sociais */}
+        <div className="flex flex-col items-center gap-3">
+          <h4 className="font-semibold text-lg mb-2">Redes Sociais</h4>
+          <div className="flex gap-3">
             <Button
               variant="outline"
               size="icon"
-              className="border-white hover:cursor-pointer text-teal-800"
+              className="bg-white text-teal-800 hover:bg-teal-600 hover:text-white transition"
             >
               <IoLogoInstagram />
             </Button>
             <Button
               variant="outline"
               size="icon"
-              className="border-white hover:cursor-pointer text-teal-800"
+              className="bg-white text-teal-800 hover:bg-teal-600 hover:text-white transition"
             >
               <FaWhatsapp />
             </Button>
             <Button
               variant="outline"
               size="icon"
-              className="border-white hover:cursor-pointer text-teal-800"
+              className="bg-white text-teal-800 hover:bg-teal-600 hover:text-white transition"
             >
               <FaXTwitter />
             </Button>
@@ -44,22 +70,26 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Middle Info Section */}
-      <div className="flex flex-wrap justify-center items-center gap-4 px-6 py-4 text-sm font-medium">
+      {/* Info Section */}
+      <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-4 py-6 text-sm text-center">
         <p>Eder Coimbra</p>
-        <span className="w-[1px] h-4 bg-white" />
+        <span className="hidden sm:inline w-[1px] h-4 bg-white mx-2" />
         <p>Psicólogo</p>
-        <span className="w-[1px] h-4 bg-white" />
+        <span className="hidden sm:inline w-[1px] h-4 bg-white mx-2" />
         <p>CRP: 123456</p>
-        <span className="w-[1px] h-4 bg-white" />
+        <span className="hidden sm:inline w-[1px] h-4 bg-white mx-2" />
         <p>São Paulo - SP</p>
       </div>
 
-      {/* Bottom Section */}
-      <div className="text-center text-sm px-6 py-4 border-t border-cyan-100/20">
-        <p>© 2023 Eder Coimbra. Todos os direitos reservados.</p>
+      {/* Bottom Copyright */}
+      <div className="text-center text-xs text-cyan-100/80 border-t border-cyan-100/20 py-4">
+        <p>
+          © {new Date().getFullYear()} Eder Coimbra. Todos os direitos
+          reservados.
+        </p>
         <p className="mt-1">
-          Desenvolvido por <span className="font-semibold">Lucas Faria</span>
+          Desenvolvido com 💙 por{" "}
+          <span className="font-semibold text-white">Lucas Faria</span>
         </p>
       </div>
     </footer>

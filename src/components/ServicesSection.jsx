@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   Card,
   CardDescription,
@@ -11,57 +11,78 @@ import { Check } from "lucide-react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const components = [
+  {
+    title: "Terapias",
+    href: "/blog/servicos/terapias",
+    description:
+      "Sessões terapêuticas individuais focadas no autoconhecimento e bem-estar emocional.",
+    image: "assets/images/terapia1.png",
+  },
+  {
+    title: "Terapia de Casal",
+    href: "/blog/servicos/terapia-de-casal",
+    description:
+      "Apoio para casais que desejam fortalecer a comunicação e superar conflitos.",
+    image: "assets/images/terapia2.png",
+  },
+  {
+    title: "Adolescente e Adulto",
+    href: "/blog/servicos/adolescente-e-adulto",
+    description:
+      "Atendimento psicológico para jovens e adultos com foco nas questões emocionais.",
+    image: "assets/images/terapia3.png",
+  },
+  {
+    title: "Sobre DBT",
+    href: "/blog/servicos/dbt",
+    description:
+      "Conheça a Terapia Dialética Comportamental para regulação emocional.",
+    image: "assets/images/terapia4.png",
+  },
+  {
+    title: "Dependentes Químicos",
+    href: "blog/servicos/dependentes-quimicos",
+    description:
+      "Acompanhamento terapêutico para recuperação de dependência química.",
+    image: "assets/images/terapia5.png",
+  },
+  {
+    title: "Sobre CNV",
+    href: "/blog/servicos/sobre-cnv",
+    description:
+      "Aprenda a se expressar com empatia e escuta ativa, fortalecendo conexões e prevenindo conflitos.",
+    image: "assets/images/cnv.jpg",
+  },
+];
+
 const ServicesSection = () => {
-  const components = [
-    {
-      title: "Terapias",
-      href: "/terapias",
-      description:
-        "Sessões terapêuticas individuais focadas no autoconhecimento e bem-estar emocional.",
-      image: "assets/images/terapia1.png",
-    },
-    {
-      title: "Terapia de Casal",
-      href: "/terapia-de-casal",
-      description:
-        "Apoio para casais que desejam fortalecer a comunicação e superar conflitos.",
-      image: "assets/images/terapia2.png",
-    },
-    {
-      title: "Adolescente e Adulto",
-      href: "assets/terapia-adolescente-adulto",
-      description:
-        "Atendimento psicológico para jovens e adultos com foco nas questões emocionais.",
-      image: "assets/images/terapia3.png",
-    },
-    {
-      title: "Sobre DBT",
-      href: "/dbt",
-      description:
-        "Conheça a Terapia Dialética Comportamental para regulação emocional.",
-      image: "assets/images/terapia4.png",
-    },
-    {
-      title: "Dependentes Químicos",
-      href: "/dependentes-quimicos",
-      description:
-        "Acompanhamento terapêutico para recuperação de dependência química.",
-      image: "assets/images/terapia5.png",
-    },
-    {
-      title: "Sobre CNV",
-      href: "/comunicacao-nao-violenta",
-      description:
-        "Aprenda a se expressar com empatia e escuta ativa, fortalecendo conexões e prevenindo conflitos.",
-      image: "assets/images/cnv.jpg",
-    },
-  ];
+  const [clickedButtons, setClickedButtons] = useState(
+    Array(components.length).fill(false)
+  );
+
+  const navigate = useNavigate();
+
+  const handleCkickService = (index, component) => {
+    const newClickedButtons = [...clickedButtons];
+    newClickedButtons[index] = !newClickedButtons[index];
+    setClickedButtons(newClickedButtons);
+
+    navigate(components[index].href);
+  };
 
   const containerRef = useRef(null);
   const headingRef = useRef(null);
+
+  const imageRefs = useRef([]);
+  const cardRefs = useRef([]);
+  const titleRefs = useRef([]);
+  const descRefs = useRef([]);
+  const btnRefs = useRef([]);
 
   useGSAP(() => {
     // animação dos cards
@@ -91,20 +112,14 @@ const ServicesSection = () => {
     });
   }, []);
 
-  const imageRefs = useRef([]);
-  const cardRefs = useRef([]);
-  const titleRefs = useRef([]);
-  const descRefs = useRef([]);
-  const btnRefs = useRef([]);
-
   return (
     <section
       ref={containerRef}
-      className="bg-gradient-to-br from-teal-900 via-teal-700 to-emerald-500"
+      className="relative after:content-[''] sm:pb-20 after:absolute after:inset-0 after:z-[-1] after:-skew-y-3 after:bg-gradient-to-br after:from-teal-900 after:via-teal-700 after:to-emerald-500"
     >
       <div
         ref={headingRef}
-        className="w-[90%] p-6 sm:p-12 mx-auto flex flex-col gap-3 pt-20 text-left text-white"
+        className="w-[90%] p-5 sm:p-10 sm:pt-20  mx-auto flex flex-col gap-3 pt-15 text-left text-white"
       >
         <h3 className="title uppercase text-sm font-semibold">What We Do</h3>
         <h2 className="title text-3xl sm:text-4xl font-bold">
@@ -203,7 +218,8 @@ const ServicesSection = () => {
 
               <Card
                 ref={(el) => (cardRefs.current[index] = el)}
-                className="card-item transition-transform duration-500 overflow-hidden h-[250px] sm:h-[250px] flex justify-between hover:text-white"
+                onClick={() => handleCkickService(index)}
+                className="card-item transition-transform duration-500 overflow-hidden h-[250px] sm:h-[250px] flex justify-between hover:text-white cursor-pointer"
               >
                 <CardHeader>
                   <CardTitle
@@ -222,8 +238,11 @@ const ServicesSection = () => {
                 <CardFooter>
                   <Button
                     ref={(el) => (btnRefs.current[index] = el)}
+                    onClick={() => handleCkickService(index, component)}
                     variant="ghost"
-                    className="text-black z-10 group-hover:text-white transition-colors duration-300 cursor-pointer"
+                    className={`z-10 group-hover:text-white transition-colors duration-300 cursor-pointer ${
+                      clickedButtons[index] ? "text-white" : "text-black"
+                    }`}
                   >
                     Ver Mais <Check />
                   </Button>

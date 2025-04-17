@@ -2,6 +2,7 @@ import UpperBar from "./components/UpperBar";
 import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
 import { TailwindIndicator } from "./components/TailwindIndicator";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Outlet />
         <TailwindIndicator />
       </main>
+      <Footer />
     </>
   );
 }

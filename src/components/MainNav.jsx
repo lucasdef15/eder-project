@@ -12,6 +12,19 @@ import {
 } from "@/components/ui/navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
+export function slugify(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .normalize("NFD") // remove acentos
+    .replace(/[\u0300-\u036f]/g, "") // remove os acentos mesmo
+    .replace(/\s+/g, "-") // espaço vira hífen
+    .replace(/[^\w\-]+/g, "") // remove caracteres especiais
+    .replace(/\-\-+/g, "-") // hifens duplicados viram um só
+    .replace(/^-+/, "") // remove hífens do começo
+    .replace(/-+$/, ""); // remove hífens do fim
+}
+
 // Dados dos serviços
 export const components = [
   {
@@ -33,7 +46,7 @@ export const components = [
       "Atendimento psicológico para jovens e adultos com foco nas questões emocionais.",
   },
   {
-    title: "Sobre DBT",
+    title: "DBT",
     href: "/dbt",
     description:
       "Conheça a Terapia Dialética Comportamental para regulação emocional.",
@@ -43,6 +56,13 @@ export const components = [
     href: "/dependentes-quimicos",
     description:
       "Acompanhamento terapêutico para recuperação de dependência química.",
+  },
+  {
+    title: "Sobre CNV",
+    href: "/comunicacao-nao-violenta",
+    description:
+      "Aprenda a se expressar com empatia e escuta ativa, fortalecendo conexões e prevenindo conflitos.",
+    image: "assets/images/cnv.jpg",
   },
 ];
 
@@ -86,7 +106,7 @@ const MainNav = () => {
                   <ListItem
                     key={component.title}
                     title={component.title}
-                    href={component.href}
+                    href={`/blog/servicos/${slugify(component.title)}`}
                   >
                     {component.description}
                   </ListItem>
@@ -97,9 +117,9 @@ const MainNav = () => {
 
           {/* Sobre */}
           <NavigationMenuItem>
-            <Link to="/sobre" legacyBehavior passHref>
+            <Link to="/contato" legacyBehavior passHref>
               <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>
-                Sobre
+                Contato
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -115,19 +135,19 @@ export const ListItem = forwardRef(
     return (
       <li>
         <NavigationMenuLink asChild>
-          <a
+          <Link
+            to={props.href}
             ref={ref}
             className={cn(
               "block space-y-1 rounded-md p-3 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
               className
             )}
-            {...props}
           >
             <div className="text-sm font-semibold">{title}</div>
             <p className="text-sm text-muted-foreground line-clamp-2">
               {children}
             </p>
-          </a>
+          </Link>
         </NavigationMenuLink>
       </li>
     );
