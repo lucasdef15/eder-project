@@ -86,7 +86,7 @@ const Header = () => {
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 '>
             <div className='flex items-center justify-between h-full'>
               {/* Logo - sempre visível e consistente */}
-              <div className='flex-shrink-0 flex items-center'>
+              <div className='flex-shrink-0 flex items-center md:pl-10'>
                 <Link
                   to='/'
                   className='flex items-center md:scale-[3] md:ml-0 md:p-1 scale-[2] ml-5'

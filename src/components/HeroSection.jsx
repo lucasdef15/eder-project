@@ -50,7 +50,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className='relative w-full h-screen overflow-hidden'>
+    <section className='relative w-full h-screen overflow-hidden bg-gradient-to-br from-[#001F3F] via-[#003366] to-[#004080]'>
       {/* Vídeo de fundo */}
       <video
         ref={videoRef}
@@ -61,7 +61,10 @@ const HeroSection = () => {
         playsInline
         preload='auto'
       >
-        <source src='/assets/videos/hero.mp4' type='video/mp4' />
+        <source
+          src='https://res.cloudinary.com/dzguhlccv/video/upload/mjkgh87v6ynujnvwik8i.mp4'
+          type='video/mp4'
+        />
         Seu navegador não suporta vídeo.
       </video>
 
