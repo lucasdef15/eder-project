@@ -1,121 +1,145 @@
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactSection = () => {
   const containerRef = useRef(null);
   const imageRef = useRef(null);
-  const topOverlayRef = useRef(null);
-  const bottomOverlayRef = useRef(null);
+  const contentRef = useRef(null);
+  const overlayRef = useRef(null);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const img = imageRef.current;
-    const top = topOverlayRef.current;
-    const bottom = bottomOverlayRef.current;
+  useGSAP(() => {
+    // Image animation on scroll
+    gsap.fromTo(
+      imageRef.current,
+      { opacity: 0, scale: 0.95 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
 
+    // Content animation on scroll
+    gsap.fromTo(
+      contentRef.current.children,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+
+    // Hover animation for image
     const onEnter = () => {
-      gsap.to(img, { scale: 1.1, duration: 0.5, ease: "power2.out" });
-      gsap.to(top, {
-        opacity: 1,
-        y: 0, // <-- desce para o centro
-        duration: 0.5,
-        ease: "power2.out",
+      gsap.to(imageRef.current, {
+        scale: 1.05,
+        duration: 0.4,
+        ease: 'power3.out',
       });
-      gsap.to(bottom, {
-        opacity: 1,
-        y: 0, // <-- sobe para o centro
-        duration: 0.5,
-        ease: "power2.out",
+      gsap.to(overlayRef.current, {
+        opacity: 0.3,
+        duration: 0.4,
+        ease: 'power3.out',
       });
     };
 
     const onLeave = () => {
-      gsap.to(img, { scale: 1, duration: 0.5, ease: "power2.out" });
-      gsap.to(top, {
-        opacity: 0,
-        y: "-100%", // <-- volta para cima
-        duration: 0.5,
-        ease: "power2.out",
+      gsap.to(imageRef.current, {
+        scale: 1,
+        duration: 0.4,
+        ease: 'power3.out',
       });
-      gsap.to(bottom, {
+      gsap.to(overlayRef.current, {
         opacity: 0,
-        y: "100%", // <-- volta para baixo
-        duration: 0.5,
-        ease: "power2.out",
+        duration: 0.4,
+        ease: 'power3.out',
       });
     };
 
-    container.addEventListener("mouseenter", onEnter);
-    container.addEventListener("mouseleave", onLeave);
+    const container = containerRef.current;
+    container.addEventListener('mouseenter', onEnter);
+    container.addEventListener('mouseleave', onLeave);
 
     return () => {
-      container.removeEventListener("mouseenter", onEnter);
-      container.removeEventListener("mouseleave", onLeave);
+      container.removeEventListener('mouseenter', onEnter);
+      container.removeEventListener('mouseleave', onLeave);
     };
   }, []);
 
   return (
-    <section className="flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 py-16 sm:py-20 max-w-7xl mx-auto gap-12 lg:gap-20">
-      {/* Imagem */}
-      <div
-        ref={containerRef}
-        className="relative w-full max-w-[400px] sm:max-w-[500px] h-[500px] sm:h-[800px] overflow-hidden rounded-3xl"
-      >
-        <img
-          ref={imageRef}
-          src="/assets/images/ederFront2.png"
-          alt="Eder Coimbra"
-          className="w-full h-full object-cover"
-        />
-
-        {/* Overlay de cima */}
+    <section className='py-25 mb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gradient-to-b from-white to-gray-50'>
+      <div className='flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16'>
+        {/* Image */}
         <div
-          ref={topOverlayRef}
-          className="absolute top-0 left-0 w-full h-1/2 bg-white/10 opacity-0"
-          style={{ transform: "translateY(-100%)" }}
-        />
-
-        {/* Overlay de baixo */}
-        <div
-          ref={bottomOverlayRef}
-          className="absolute bottom-0 left-0 w-full h-1/2 bg-white/10 opacity-0"
-          style={{ transform: "translateY(100%)" }}
-        />
-      </div>
-
-      {/* Conteúdo */}
-      <div className="w-full max-w-xl flex flex-col gap-6 text-center lg:text-left">
-        <h3 className="text-teal-600 uppercase text-sm font-semibold">
-          Entre em contato
-        </h3>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-950">
-          Fale com a gente
-        </h2>
-        <p className="text-emerald-800 text-base sm:text-lg">
-          Estamos aqui para te ajudar. Você pode nos ligar, mandar uma mensagem
-          ou visitar nosso espaço acolhedor. Escolha o melhor canal para você.
-        </p>
-
-        <div className="flex flex-col gap-4 text-emerald-900 items-center lg:items-start">
-          <div className="flex items-center gap-3">
-            <FaPhoneAlt className="text-teal-600" />
-            <span>(11) 99999-9999</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <FaEnvelope className="text-teal-600" />
-            <span>contato@mindfulness.com.br</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <FaMapMarkerAlt className="text-teal-600" />
-            <span>Rua do Equilíbrio, 123 - São Paulo, SP</span>
-          </div>
+          ref={containerRef}
+          className='relative w-full max-w-md h-[400px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg'
+        >
+          <img
+            ref={imageRef}
+            src='/assets/images/ederFront2.png'
+            alt='Eder Coimbra'
+            className='w-full h-full object-cover'
+          />
+          <div
+            ref={overlayRef}
+            className='absolute inset-0 bg-gradient-to-t from-teal-600/30 to-transparent opacity-0 transition-opacity duration-300'
+          />
         </div>
 
-        <button className="relative overflow-hidden rounded-2xl cursor-pointer w-50  px-6 py-3 font-semibold text-white bg-gradient-to-r from-teal-500 to-emerald-500 shadow-lg transition-all duration-500 ease-in-out hover:from-emerald-500 hover:to-teal-500 hover:scale-105">
-          <span className="relative z-10 ">Saiba Mais</span>
-          <span className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-500 opacity-0 hover:opacity-20 transition duration-700 blur-sm" />
-        </button>
+        {/* Content */}
+        <div
+          ref={contentRef}
+          className='w-full max-w-lg flex flex-col gap-6 text-center lg:text-left'
+        >
+          <h3 className='text-teal-600 text-sm font-semibold uppercase tracking-wider'>
+            Entre em Contato
+          </h3>
+          <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 leading-tight'>
+            Fale Conosco
+          </h2>
+          <p className='text-gray-700 text-base sm:text-lg leading-relaxed'>
+            Estamos prontos para te apoiar. Entre em contato por telefone,
+            e-mail ou visite nosso espaço acolhedor.
+          </p>
+
+          <div className='flex flex-col gap-4 text-gray-800'>
+            <div className='flex items-center gap-3 justify-center lg:justify-start'>
+              <FaPhoneAlt className='text-teal-600 w-5 h-5' />
+              <span>(11) 99999-9999</span>
+            </div>
+            <div className='flex items-center gap-3 justify-center lg:justify-start'>
+              <FaEnvelope className='text-teal-600 w-5 h-5' />
+              <span>contato@mindfulness.com.br</span>
+            </div>
+            <div className='flex items-center gap-3 justify-center lg:justify-start'>
+              <FaMapMarkerAlt className='text-teal-600 w-5 h-5' />
+              <span>Rua do Equilíbrio, 123 - São Paulo, SP</span>
+            </div>
+          </div>
+
+          <button className='relative mt-4 px-6 py-3 w-fit mx-auto lg:mx-0 rounded-full bg-teal-600 text-white font-semibold shadow-md hover:bg-teal-700 transition-all duration-300 hover:scale-105'>
+            Saiba Mais
+          </button>
+        </div>
       </div>
     </section>
   );

@@ -28,5 +28,11 @@
     "slug": "dependentes-quimicos",
     "description": "A recuperação da dependência química é um processo desafiador, mas com o acompanhamento terapêutico adequado, é possível trilhar um caminho de transformação. A terapia para dependentes químicos oferece um suporte essencial para aqueles que buscam superar o vício e reconstruir suas vidas. Através de sessões individuais ou em grupo, os pacientes aprendem a lidar com os gatilhos do vício, a melhorar o controle sobre suas escolhas e a desenvolver hábitos saudáveis para sua recuperação. Com o apoio de profissionais especializados, o processo terapêutico visa não apenas a abstinência, mas também o fortalecimento emocional, a restauração da autoestima e a construção de uma vida livre das substâncias. A recuperação é uma jornada contínua que exige empenho e coragem, mas com o suporte adequado, é possível recuperar a qualidade de vida e encontrar novos caminhos de bem-estar.",
     "image": "/assets/images/dependentes-quimicos.jpg"
+  },
+  {
+    "title": "Comunicação Não Violenta",
+    "slug": "sobre-cnv",
+    "description": "A Comunicação Não Violenta (CNV) é uma abordagem que promove o entendimento, a empatia e a conexão verdadeira entre as pessoas. Por meio de técnicas específicas, a CNV ajuda a identificar sentimentos e necessidades, facilitando diálogos mais respeitosos e construtivos. Essa prática é fundamental para melhorar relacionamentos pessoais, familiares e profissionais, pois incentiva a escuta ativa e a expressão autêntica sem julgamentos ou agressividade. Aprender CNV pode transformar conflitos em oportunidades de crescimento e fortalecer a convivência harmoniosa, proporcionando mais equilíbrio emocional e qualidade de vida.",
+    "image": "/assets/images/cnv.jpg"
   }
 ]

@@ -1,4 +1,5 @@
 // src/pages/ServiceDetails.jsx
+import LoadingSpinner from "@/components/LoadingSpinner";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -51,7 +52,9 @@ export default function ServiceDetails() {
           </div>
         </section>
       ) : (
-        <p>Carregando Serviço...</p>
+        <section className="flex items-center justify-center h-screen">
+          <LoadingSpinner />
+        </section>
       )}
     </section>
   );

@@ -1,17 +1,19 @@
-import React, { useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { FaArrowRight, FaWhatsapp } from "react-icons/fa";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import React, { useRef } from 'react';
+import { Button } from '@/components/ui/button';
+import { FaArrowRight, FaWhatsapp } from 'react-icons/fa';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function ButtonSecondary({ children }) {
+export function ButtonSecondary({ children, onClick }) {
   return (
     <Button
-      variant="secondary"
-      className="rounded-full bg-emerald-400 cursor-pointer py-7 hover:bg-emerald-700 hover:text-white transition-all w-full sm:w-[50%]  md:w-auto"
+      variant='secondary'
+      onClick={onClick}
+      className='rounded-full bg-emerald-500 text-white cursor-pointer px-6 py-4 hover:bg-emerald-700 transition-all text-base font-semibold shadow-md'
     >
       {children}
     </Button>
@@ -21,9 +23,9 @@ export function ButtonSecondary({ children }) {
 export function ButtonIcon() {
   return (
     <Button
-      variant="outline"
-      size="icon"
-      className="border-emerald-200 cursor-pointer bg-emerald-200 hover:bg-emerald-700 hover:text-white transition-all"
+      variant='outline'
+      size='icon'
+      className='border-emerald-500 text-emerald-700 cursor-pointer bg-white hover:bg-emerald-700 hover:text-white transition-all shadow'
     >
       <FaWhatsapp />
     </Button>
@@ -37,69 +39,72 @@ const BookSection = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 80%",
+        start: 'top 80%',
       },
     });
 
-    tl.from(".book-heading", {
-      y: -50,
+    tl.from('.book-heading', {
+      y: -40,
       opacity: 0,
-      duration: 1,
-      ease: "power3.out",
+      duration: 0.8,
+      ease: 'power2.out',
     })
       .from(
-        ".book-paragraph",
+        '.book-paragraph',
         {
-          y: 30,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-        },
-        "-=0.5"
-      )
-      .from(
-        ".book-buttons",
-        {
-          scale: 0.8,
+          y: 20,
           opacity: 0,
           duration: 0.8,
-          ease: "bounce.out",
+          ease: 'power2.out',
         },
-        "-=0.4"
+        '-=0.5'
+      )
+      .from(
+        '.book-buttons',
+        {
+          scale: 0.95,
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        },
+        '-=0.4'
       );
   }, []);
 
+  const navigate = useNavigate();
+
   return (
-    <div
-      className="flex flex-col md:flex-row gap-10 py-10 px-6 bg-[rgba(167,243,208,0.36)]"
-      ref={containerRef}
-    >
-      {/* Título */}
-      <h2 className="text-3xl md:text-5xl font-medium text-emerald-950 book-heading">
-        Dê o Primeiro Passo em Direção a uma Vida Equilibrada e Plena.
-      </h2>
+    <section ref={containerRef} className='bg-emerald-50 py-16 px-6 md:px-10'>
+      <div className='px-4 py-10 md:p-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12'>
+        {/* Título */}
+        <div className='flex-1'>
+          <h2 className='text-4xl md:text-5xl font-bold text-emerald-900 leading-tight book-heading'>
+            Dê o Primeiro Passo <br className='hidden md:block' /> em Direção a
+            uma Vida Equilibrada e Plena.
+          </h2>
+        </div>
 
-      {/* Parágrafo + Botões */}
-      <div className="flex flex-col justify-between gap-6 text-emerald-800 book-paragraph">
-        <p>
-          Com uma equipe de psicólogos altamente qualificados, oferecemos
-          terapias eficazes e personalizadas de acordo com suas necessidades.
-          Conte conosco para te apoiar em cada etapa dessa jornada.
-        </p>
+        {/* Parágrafo + Botões */}
+        <div className='flex-1 flex flex-col gap-8 text-emerald-800 book-paragraph'>
+          <p className='text-lg leading-relaxed'>
+            Com uma equipe de psicólogos altamente qualificados, oferecemos
+            terapias eficazes e personalizadas conforme suas necessidades. Conte
+            conosco para te apoiar em cada etapa dessa jornada.
+          </p>
 
-        {/* Botões (visíveis no mobile agora também!) */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <ButtonSecondary>
-            Agendar uma Consulta <FaArrowRight />
-          </ButtonSecondary>
+          <div className='flex flex-col sm:flex-row sm:items-center gap-4 book-buttons'>
+            <ButtonSecondary onClick={() => navigate('/calendar')}>
+              Agendar uma Consulta <FaArrowRight className='ml-2' />
+            </ButtonSecondary>
 
-          <span className="flex items-center gap-2 font-medium">
-            Ou envie uma mensagem no WhatsApp
-            <ButtonIcon />
-          </span>
+            <span className='flex items-center gap-2 font-medium text-emerald-700'>
+              ou envie uma mensagem
+              <ButtonIcon />
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

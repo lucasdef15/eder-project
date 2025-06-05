@@ -1,8 +1,8 @@
-import { IoIosCheckmark } from "react-icons/io";
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { IoIosCheckmark } from 'react-icons/io';
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,125 +13,142 @@ const Benefits = () => {
 
   useGSAP(
     () => {
-      gsap.from(headingRef.current, {
-        y: -40,
-        opacity: 0,
-        duration: 1.2,
-        ease: "bounce.out",
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 80%",
-        },
-      });
+      // Heading animation
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
 
-      gsap.from(subheadingRef.current, {
-        y: -30,
-        opacity: 0,
-        duration: 1.1,
-        delay: 0.2,
-        ease: "bounce.out",
-        scrollTrigger: {
-          trigger: subheadingRef.current,
-          start: "top 80%",
-        },
-      });
+      // Subheading animation
+      gsap.fromTo(
+        subheadingRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: subheadingRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
 
-      gsap.from(".benefit-item", {
-        opacity: 0,
-        y: 30,
-        duration: 1.5,
-        stagger: 0.25,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 85%",
-        },
-      });
+      // Benefit items animation
+      gsap.fromTo(
+        '.benefit-item',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
     },
-    { scope: containerRef } // nova forma de escopo
+    { scope: containerRef }
   );
 
   const features = [
     {
       title:
-        "Para avançar em sua jornada é preciso identificar suas CRENÇAS LIMITANTES e superá-las.",
+        'Identifique e supere suas crenças limitantes para avançar em sua jornada.',
+    },
+    {
+      title: 'Alcance equilíbrio emocional para uma maior qualidade de vida.',
+    },
+    {
+      title: 'Equilibre mente consciente e inconsciente por meio da autocura.',
     },
     {
       title:
-        "Para ter mais qualidade de vida é imprescindível ter EQUILÍBRIO EMOCIONAL.",
+        'Desenvolva empatia e torne-se uma força poderosa na vida de outros.',
+    },
+    {
+      title: 'Cultive autoconfiança e entusiasmo pela vida.',
+    },
+    {
+      title: 'Aprimore habilidades de liderança e autogestão.',
+    },
+    {
+      title: 'Construa relacionamentos saudáveis com Deus, pessoas e o mundo.',
+    },
+    {
+      title: 'Fortaleça o amor próprio por sua trajetória e legado.',
+    },
+    {
+      title: 'Eleve sua autoestima e aceite verdadeiramente quem você é.',
+    },
+    {
+      title: 'Conecte-se aos seus valores mais profundos e viva seu propósito.',
     },
     {
       title:
-        "Melhore sua saúde equilibrndo sua Mente Consciente e Inconsciente através da AUTOCURA.",
+        'Desenvolva humanidade, pensamento sistêmico e conexão espiritual.',
     },
     {
-      title:
-        "Desenvolva sua humanidade através da EMPATIA e seja uma poderosa força na vida daqueles que o cercam.",
-    },
-    {
-      title:
-        "Crie um sentimento profundo de AUTOCONFIANÇA e BOM ÂNIMO em si mesmo e na vida.",
-    },
-    {
-      title: "Melhoria das habilidades de LIDERANÇA e AUTOGESTÃO.",
-    },
-    {
-      title:
-        "Desenvolva RELACIONAMENTOS SAUDÁVEIS com DEUS, com as outras pessoas e o mundo em geral.",
-    },
-    {
-      title:
-        "Desenvolva o AMOR PRÓPRIO pela sua trajetória e pelo legado que está construindo.",
-    },
-    {
-      title:
-        "Eleve sua AUTOESTIMA, aceite verdadeiramente quem você é e tenha mais confiança em você mesmo.",
-    },
-    {
-      title:
-        "Acesse seus VALORES mais profundos e viva integralmente seu PROPÓSITO DE VIDA.",
-    },
-    {
-      title:
-        "Desenvolva um senso de HUMANIDADE, PENSAMENTO SISTÊMICO e CONEXÃO consigo mesmo e com DEUS.",
-    },
-    {
-      title: "Maior autoconhecimento e melhoria na tomada de DECISÃO.",
+      title: 'Aprimore o autoconhecimento e tome decisões mais assertivas.',
     },
   ];
 
   return (
-    <div className="px-4 py-10 md:p-10 max-w-6xl mx-auto" ref={containerRef}>
-      {/* Cabeçalho */}
-      <div className="pb-8 text-center md:text-left">
+    <section
+      ref={containerRef}
+      className='py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-white'
+    >
+      {/* Header */}
+      <div className='text-center mb-12'>
         <h3
           ref={headingRef}
-          className="text-teal-600 uppercase text-sm font-semibold mb-2"
+          className='text-teal-600 text-sm font-semibold uppercase tracking-wider'
         >
           Por que nos escolher
         </h3>
         <h2
           ref={subheadingRef}
-          className="text-2xl sm:text-3xl font-bold text-emerald-950"
+          className='mt-3 text-3xl sm:text-4xl font-bold text-gray-900 leading-tight'
         >
-          Quais os ganhos ao fazer um Processo Terapêutico?
+          Benefícios do Processo Terapêutico
         </h2>
       </div>
 
-      {/* Lista de Benefícios */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-x-8">
+      {/* Benefits List */}
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
         {features.map((feature, idx) => (
-          <div key={idx} className="benefit-item flex items-start gap-3">
-            <div className="bg-teal-200 rounded-full p-1 shrink-0">
-              <IoIosCheckmark className="text-teal-700 w-5 h-5" />
+          <div
+            key={idx}
+            className='benefit-item flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors duration-300'
+          >
+            <div className='bg-teal-100 rounded-full p-2 shrink-0'>
+              <IoIosCheckmark className='text-teal-600 w-6 h-6' />
             </div>
-            <p className="text-emerald-950 text-base leading-relaxed">
+            <p className='text-gray-800 text-base leading-relaxed font-medium'>
               {feature.title}
             </p>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
