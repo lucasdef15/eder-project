@@ -7,6 +7,7 @@ import TherapistDetails from './pages/TherapistDetails';
 import Login from './pages/Login';
 import CalendarPage from './pages/CallendarPage';
 import { ScrollRestoration } from 'react-router-dom';
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: '/login', element: <Login /> },
+  { path: '*', element: <NotFound /> },
 ]);
 
 export default function Router() {

@@ -153,9 +153,12 @@ const ServicesSection = () => {
     const particles = document.querySelectorAll('.particle');
     particles.forEach((particle) => {
       gsap.to(particle, {
-        x: 'random(-10, 10)',
-        y: 'random(-10, 10)',
-        duration: 'random(3, 5)',
+        x: 'random(-50, 50)', // Maior amplitude de movimento
+        y: 'random(-50, 50)', // Maior amplitude de movimento
+        scale: 'random(0.8, 1.2)', // Variação de escala para pulsação
+        opacity: 'random(0.2, 0.6)', // Variação de opacidade
+        rotation: 'random(-30, 30)', // Adiciona leve rotação
+        duration: 'random(1.5, 3)', // Animação mais rápida
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
