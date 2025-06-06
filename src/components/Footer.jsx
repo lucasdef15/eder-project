@@ -19,89 +19,33 @@ const Footer = () => {
 
   // Animações GSAP
   useGSAP(() => {
-    // Animação da seção de logo
-    gsap.fromTo(
-      logoSectionRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        },
-      }
-    );
+    if (!containerRef.current) return;
 
-    // Animação da seção de navegação
-    gsap.fromTo(
-      navSectionRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        },
+    const animateSection = (ref, delay = 0) => {
+      if (ref.current) {
+        gsap.fromTo(
+          ref.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: 'top 80%',
+            },
+          }
+        );
       }
-    );
+    };
 
-    // Animação da seção de redes sociais
-    gsap.fromTo(
-      socialSectionRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.4,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        },
-      }
-    );
-
-    // Animação da seção de informações
-    gsap.fromTo(
-      infoSectionRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        delay: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        },
-      }
-    );
-
-    // Animação do copyright
-    gsap.fromTo(
-      copyrightRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        delay: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-        },
-      }
-    );
+    animateSection(logoSectionRef);
+    animateSection(navSectionRef, 0.2);
+    animateSection(socialSectionRef, 0.4);
+    animateSection(infoSectionRef, 0.6);
+    animateSection(copyrightRef, 0.8);
   }, []);
 
   return (
