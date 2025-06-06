@@ -12,60 +12,60 @@ const HowWeWork = () => {
   const stepsRef = useRef([]);
   const cardsRef = useRef([]);
 
-  useEffect(() => {
-    // Cabeçalho
-    gsap.fromTo(
-      [titleRef.current, subtitleRef.current, descRef.current],
-      { y: 30, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.2,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: 'top 80%',
-          toggleActions: 'play reset play reset', // repete ao subir e descer
-        },
-      }
-    );
+  // useEffect(() => {
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: titleRef.current,
+  //       start: 'top 80%',
+  //       toggleActions: 'play reset play reset',
+  //     },
+  //   });
 
-    // Bolinhas dos steps
-    gsap.fromTo(
-      stepsRef.current,
-      { scale: 0.5, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: stepsRef.current[0],
-          start: 'top 80%',
-          toggleActions: 'play reset play reset',
-        },
-      }
-    );
+  //   if (titleRef.current && subtitleRef.current && descRef.current) {
+  //     tl.fromTo(
+  //       [titleRef.current, subtitleRef.current, descRef.current],
+  //       { y: 30, opacity: 0 },
+  //       { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: 'power3.out' }
+  //     );
+  //   }
 
-    // Cards
-    gsap.fromTo(
-      cardsRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: cardsRef.current[0],
-          start: 'top 80%',
-          toggleActions: 'play reset play reset',
-        },
-      }
-    );
-  }, []);
+  //   if (stepsRef.current.length > 0) {
+  //     gsap.fromTo(
+  //       stepsRef.current,
+  //       { scale: 0.5, opacity: 0 },
+  //       {
+  //         scale: 1,
+  //         opacity: 1,
+  //         duration: 1,
+  //         stagger: 0.2,
+  //         ease: 'back.out(1.7)',
+  //         scrollTrigger: {
+  //           trigger: stepsRef.current[0],
+  //           start: 'top 80%',
+  //           toggleActions: 'play reset play reset',
+  //         },
+  //       }
+  //     );
+  //   }
+
+  //   if (cardsRef.current.length > 0) {
+  //     gsap.fromTo(
+  //       cardsRef.current,
+  //       { y: 50, opacity: 0 },
+  //       {
+  //         y: 0,
+  //         opacity: 1,
+  //         duration: 1,
+  //         stagger: 0.2,
+  //         scrollTrigger: {
+  //           trigger: cardsRef.current[0],
+  //           start: 'top 80%',
+  //           toggleActions: 'play reset play reset',
+  //         },
+  //       }
+  //     );
+  //   }
+  // }, []);
 
   return (
     <section className='p-10 sm:p-20'>

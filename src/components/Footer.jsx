@@ -17,37 +17,6 @@ const Footer = () => {
   const infoSectionRef = useRef(null);
   const copyrightRef = useRef(null);
 
-  // Animações GSAP
-  useGSAP(() => {
-    if (!containerRef.current) return;
-
-    const animateSection = (ref, delay = 0) => {
-      if (ref.current) {
-        gsap.fromTo(
-          ref.current,
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: 'top 80%',
-            },
-          }
-        );
-      }
-    };
-
-    animateSection(logoSectionRef);
-    animateSection(navSectionRef, 0.2);
-    animateSection(socialSectionRef, 0.4);
-    animateSection(infoSectionRef, 0.6);
-    animateSection(copyrightRef, 0.8);
-  }, []);
-
   return (
     <footer
       ref={containerRef}
