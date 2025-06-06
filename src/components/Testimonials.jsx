@@ -109,8 +109,8 @@ const Depoimentos = () => {
     >
       <div className='max-w-5xl mx-auto'>
         {/* Cabeçalho minimalista */}
-        <div className='text-center mb-16'>
-          <h2 className='text-3xl font-light text-gray-800 mb-3'>
+        <div className='text-center mb-30'>
+          <h2 className='text-4xl md:text-5xl mb-5 font-bold text-emerald-950'>
             Depoimentos
           </h2>
           <div className='w-16 h-px bg-gray-300 mx-auto'></div>
@@ -163,7 +163,7 @@ const Depoimentos = () => {
 
           {/* Controles de navegação - visíveis apenas em hover ou mobile */}
           <div
-            className={`flex justify-between absolute top-1/2 left-0 right-0 -translate-y-1/2 pointer-events-none transition-opacity duration-300 ${
+            className={`flex justify-between absolute top-20 md:top-1/2 left-0 right-0 -translate-y-1/2 pointer-events-none transition-opacity duration-300 ${
               isHovering || isMobile ? 'opacity-100' : 'opacity-0'
             }`}
           >

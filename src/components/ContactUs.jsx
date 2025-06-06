@@ -86,61 +86,63 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section className='py-25 mb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gradient-to-b from-white to-gray-50'>
-      <div className='flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16'>
-        {/* Image */}
-        <div
-          ref={containerRef}
-          className='relative w-full max-w-md h-[400px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg'
-        >
-          <img
-            ref={imageRef}
-            src='/assets/images/ederFront2.png'
-            alt='Eder Coimbra'
-            className='w-full h-full object-cover'
-          />
+    <section className='bg-gradient-to-b from-white to-gray-50'>
+      <section className='py-30  px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto '>
+        <div className='flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16'>
+          {/* Image */}
           <div
-            ref={overlayRef}
-            className='absolute inset-0 bg-gradient-to-t from-teal-600/30 to-transparent opacity-0 transition-opacity duration-300'
-          />
-        </div>
-
-        {/* Content */}
-        <div
-          ref={contentRef}
-          className='w-full max-w-lg flex flex-col gap-6 text-center lg:text-left'
-        >
-          <h3 className='text-teal-600 text-sm font-semibold uppercase tracking-wider'>
-            Entre em Contato
-          </h3>
-          <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 leading-tight'>
-            Fale Conosco
-          </h2>
-          <p className='text-gray-700 text-base sm:text-lg leading-relaxed'>
-            Estamos prontos para te apoiar. Entre em contato por telefone,
-            e-mail ou visite nosso espaço acolhedor.
-          </p>
-
-          <div className='flex flex-col gap-4 text-gray-800'>
-            <div className='flex items-center gap-3 justify-center lg:justify-start'>
-              <FaPhoneAlt className='text-teal-600 w-5 h-5' />
-              <span>(11) 99999-9999</span>
-            </div>
-            <div className='flex items-center gap-3 justify-center lg:justify-start'>
-              <FaEnvelope className='text-teal-600 w-5 h-5' />
-              <span>contato@mindfulness.com.br</span>
-            </div>
-            <div className='flex items-center gap-3 justify-center lg:justify-start'>
-              <FaMapMarkerAlt className='text-teal-600 w-5 h-5' />
-              <span>Rua do Equilíbrio, 123 - São Paulo, SP</span>
-            </div>
+            ref={containerRef}
+            className='relative w-full max-w-md h-[400px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg'
+          >
+            <img
+              ref={imageRef}
+              src='/assets/images/ederFront2.png'
+              alt='Eder Coimbra'
+              className='w-full h-full object-cover'
+            />
+            <div
+              ref={overlayRef}
+              className='absolute inset-0 bg-gradient-to-t from-teal-600/30 to-transparent opacity-0 transition-opacity duration-300'
+            />
           </div>
 
-          <button className='relative mt-4 px-6 py-3 w-fit mx-auto lg:mx-0 rounded-full bg-teal-600 text-white font-semibold shadow-md hover:bg-teal-700 transition-all duration-300 hover:scale-105'>
-            Saiba Mais
-          </button>
+          {/* Content */}
+          <div
+            ref={contentRef}
+            className='w-full max-w-lg flex flex-col gap-6 text-center lg:text-left'
+          >
+            <h3 className='text-teal-600 text-sm font-semibold uppercase tracking-wider'>
+              Entre em Contato
+            </h3>
+            <h2 className='text-3xl sm:text-4xl font-bold text-gray-900 leading-tight'>
+              Fale Conosco
+            </h2>
+            <p className='text-gray-700 text-base sm:text-lg leading-relaxed'>
+              Estamos prontos para te apoiar. Entre em contato por telefone,
+              e-mail ou visite nosso espaço acolhedor.
+            </p>
+
+            <div className='flex flex-col gap-4 text-gray-800'>
+              <div className='flex items-center gap-3 justify-center lg:justify-start'>
+                <FaPhoneAlt className='text-teal-600 w-5 h-5' />
+                <span>(11) 99999-9999</span>
+              </div>
+              <div className='flex items-center gap-3 justify-center lg:justify-start'>
+                <FaEnvelope className='text-teal-600 w-5 h-5' />
+                <span>contato@mindfulness.com.br</span>
+              </div>
+              <div className='flex items-center gap-3 justify-center lg:justify-start'>
+                <FaMapMarkerAlt className='text-teal-600 w-5 h-5' />
+                <span>Rua do Equilíbrio, 123 - São Paulo, SP</span>
+              </div>
+            </div>
+
+            <button className='relative mt-4 px-6 py-3 w-fit mx-auto lg:mx-0 rounded-full bg-teal-600 text-white font-semibold shadow-md hover:bg-teal-700 transition-all duration-300 hover:scale-105'>
+              Saiba Mais
+            </button>
+          </div>
         </div>
-      </div>
+      </section>
     </section>
   );
 };

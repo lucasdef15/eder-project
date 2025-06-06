@@ -1,95 +1,229 @@
-import React from "react";
-import { IoLogoInstagram } from "react-icons/io";
-import { FaWhatsapp } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { Button } from "@/components/ui/button";
+import React, { useRef } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { IoLogoInstagram } from 'react-icons/io';
+import { FaWhatsapp } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+
+// Registrando plugin GSAP
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
+  const containerRef = useRef(null);
+  const logoSectionRef = useRef(null);
+  const navSectionRef = useRef(null);
+  const socialSectionRef = useRef(null);
+  const infoSectionRef = useRef(null);
+  const copyrightRef = useRef(null);
+
+  // Animações GSAP
+  useGSAP(() => {
+    // Animação da seção de logo
+    gsap.fromTo(
+      logoSectionRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+      }
+    );
+
+    // Animação da seção de navegação
+    gsap.fromTo(
+      navSectionRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+      }
+    );
+
+    // Animação da seção de redes sociais
+    gsap.fromTo(
+      socialSectionRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.4,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+      }
+    );
+
+    // Animação da seção de informações
+    gsap.fromTo(
+      infoSectionRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+      }
+    );
+
+    // Animação do copyright
+    gsap.fromTo(
+      copyrightRef.current,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+      }
+    );
+  }, []);
+
   return (
-    <footer className="bg-teal-800 text-white mt-20 pt-10 px-6 sm:px-10">
+    <footer
+      ref={containerRef}
+      className='relative bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-900 text-white mt-20 pt-10 px-6 sm:px-10 overflow-hidden'
+    >
       {/* Top Grid Section */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 pb-10 border-b border-cyan-100/20 justify-items-center text-center">
+      <div className='max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 pb-10 border-b border-white/20 justify-items-center text-center'>
         {/* Logo & About */}
-        <div className="flex flex-col items-center gap-3">
+        <div ref={logoSectionRef} className='flex flex-col items-center gap-4'>
           <img
-            src="/assets/images/logoLight.svg"
-            className="w-10 scale-[3]"
-            alt="Logo Eder Coimbra"
+            src='/assets/images/logoLight.svg'
+            className='w-12 scale-[2.5]'
+            alt='Logo Eder Coimbra'
           />
-          <p className="text-sm max-w-[250px]">
+          <p className='text-sm max-w-[250px] opacity-80 font-light'>
             Psicólogo dedicado ao cuidado emocional e bem-estar humano.
           </p>
         </div>
 
         {/* Navegação */}
-        <div className="flex flex-col items-center gap-2">
-          <h4 className="font-semibold text-lg mb-2">Navegação</h4>
-          <a href="/terapias" className="hover:underline text-sm">
-            Terapias
-          </a>
-          <a href="/dbt" className="hover:underline text-sm">
-            Sobre DBT
-          </a>
-          <a
-            href="/comunicacao-nao-violenta"
-            className="hover:underline text-sm"
-          >
-            Sobre CNV
-          </a>
-          <a href="/dependentes-quimicos" className="hover:underline text-sm">
-            Dependência Química
-          </a>
+        <div ref={navSectionRef} className='flex flex-col items-center gap-3'>
+          <h4 className='text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-violet-300 mb-3'>
+            Navegação
+          </h4>
+          <div className='flex flex-col gap-2'>
+            <a
+              href='/terapias'
+              className='text-sm hover:bg-white/10 hover:backdrop-blur-md px-3 py-1 rounded-full transition-all duration-300'
+            >
+              Terapias
+            </a>
+            <a
+              href='/dbt'
+              className='text-sm hover:bg-white/10 hover:backdrop-blur-md px-3 py-1 rounded-full transition-all duration-300'
+            >
+              Sobre DBT
+            </a>
+            <a
+              href='/comunicacao-nao-violenta'
+              className='text-sm hover:bg-white/10 hover:backdrop-blur-md px-3 py-1 rounded-full transition-all duration-300'
+            >
+              Sobre CNV
+            </a>
+            <a
+              href='/dependentes-quimicos'
+              className='text-sm hover:bg-white/10 hover:backdrop-blur-md px-3 py-1 rounded-full transition-all duration-300'
+            >
+              Dependência Química
+            </a>
+          </div>
         </div>
 
         {/* Redes Sociais */}
-        <div className="flex flex-col items-center gap-3">
-          <h4 className="font-semibold text-lg mb-2">Redes Sociais</h4>
-          <div className="flex gap-3">
-            <Button
-              variant="outline"
-              size="icon"
-              className="bg-white text-teal-800 hover:bg-teal-600 hover:text-white transition"
+        <div
+          ref={socialSectionRef}
+          className='flex flex-col items-center gap-4'
+        >
+          <h4 className='text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-violet-300 mb-3'>
+            Redes Sociais
+          </h4>
+          <div className='flex gap-4'>
+            <a
+              href='https://instagram.com'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300'
+              aria-label='Instagram'
             >
-              <IoLogoInstagram />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="bg-white text-teal-800 hover:bg-teal-600 hover:text-white transition"
+              <IoLogoInstagram size={20} />
+            </a>
+            <a
+              href='https://whatsapp.com'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300'
+              aria-label='WhatsApp'
             >
-              <FaWhatsapp />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="bg-white text-teal-800 hover:bg-teal-600 hover:text-white transition"
+              <FaWhatsapp size={20} />
+            </a>
+            <a
+              href='https://x.com'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300'
+              aria-label='Twitter'
             >
-              <FaXTwitter />
-            </Button>
+              <FaXTwitter size={20} />
+            </a>
           </div>
         </div>
       </div>
 
       {/* Info Section */}
-      <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-4 py-6 text-sm text-center">
+      <div
+        ref={infoSectionRef}
+        className='max-w-7xl mx-auto flex flex-wrap justify-center gap-4 py-6 text-sm text-center opacity-80'
+      >
         <p>Eder Coimbra</p>
-        <span className="hidden sm:inline w-[1px] h-4 bg-white mx-2" />
+        <span className='hidden sm:inline w-[1px] h-4 bg-white/50 mx-2' />
         <p>Psicólogo</p>
-        <span className="hidden sm:inline w-[1px] h-4 bg-white mx-2" />
+        <span className='hidden sm:inline w-[1px] h-4 bg-white/50 mx-2' />
         <p>CRP: 123456</p>
-        <span className="hidden sm:inline w-[1px] h-4 bg-white mx-2" />
+        <span className='hidden sm:inline w-[1px] h-4 bg-white/50 mx-2' />
         <p>São Paulo - SP</p>
       </div>
 
       {/* Bottom Copyright */}
-      <div className="text-center text-xs text-cyan-100/80 border-t border-cyan-100/20 py-4">
+      <div
+        ref={copyrightRef}
+        className='text-center text-xs text-white/70 border-t border-white/20 py-4'
+      >
         <p>
           © {new Date().getFullYear()} Eder Coimbra. Todos os direitos
           reservados.
         </p>
-        <p className="mt-1">
-          Desenvolvido com 💙 por{" "}
-          <span className="font-semibold text-white">Lucas Faria</span>
+        <p className='mt-1'>
+          Desenvolvido com 💙 por{' '}
+          <span className='font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-violet-300'>
+            Lucas Faria
+          </span>
         </p>
       </div>
     </footer>
